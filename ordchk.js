@@ -15,14 +15,16 @@ function validateORDCode() {
         ? Array.from({length: +m[2]}, () => m[1])
         : [w];
     });
+    const countREN = tokens.filter(t => t === "REN").length;
     
 
-    if (!tokens.includes("REN")) {
-        pusherror("Missing required function 'REN' in input.", "A missing 'REN' suffix will prevent this input from being processed properly in view.");
+    if (countREN === 0) {
+        pusherror("Missing required function 'REN' in input.", "A missing 'REN' suffix …");
+    } else if (countREN > 1) {
+        pusherror("Multiple 'REN' tokens found. Only one allowed.", "You have more than one 'REN'. This is an invalid input");
     } else {
-
-        const renIndex = tokens.lastIndexOf("REN");
-        if (renIndex < tokens.length - 1) {
+        const renIndex = tokens.indexOf("REN");
+        if (renIndex !== tokens.length - 1) {
             pusherror("Unexpected function after 'REN'.", "There should be no function after 'REN'. Move 'REN' to the end.");
         }
     }
