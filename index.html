@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>ordinance validator</title>
+    <script src="ordchk.js"></script>
+</head>
+  <link rel="stylesheet" href="https://newcss.net/theme/terminal.css"> 
+  <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
+  <link rel="stylesheet" href="index.css"> 
+  <header>
+    <img src="header.png">
+  </header> 
+<body>
+    <div class="content">
+      <label for="ordinput" class="inputtext">Input:</label><br>
+      <input type="text" id="ordinput" name="ordinput" oninput="validateORDCode()"><br><br>
+      <input type="submit" value="Submit" onclick="validateORDCode()" class="button">
+    </div>
+      <div id="log">
+    </div>
+    <footer>
+      <hr>
+      <a href="https://gaq9.com" target="_blank">
+          <img src="https://gaq9.com/img/gaq1999.gif" alt="GAQ9" style="width: 200px; height: 71px;">
+      </a>
+    </footer>
+</body>
+</html>
