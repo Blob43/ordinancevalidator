@@ -19,7 +19,7 @@ function validateORDCode() {
     
 
     if (countREN === 0) {
-        pusherror("Missing required function 'REN' in input.", "A missing 'REN' suffix …");
+        pusherror("Missing required function 'REN' in input.", "A missing 'REN' function may not process what you inputted previously.");
     } else if (countREN > 1) {
         pusherror("Multiple 'REN' tokens found. Only one allowed.", "You have more than one 'REN'. This is an invalid input");
     } else {
@@ -32,6 +32,8 @@ function validateORDCode() {
     const invalid = tokens.filter(w => !allowed.includes(w));
     if (invalid.length) {
         pusherror("Invalid ORD Function or empty input found: " + invalid.join(", "), "Did you type the code correctly?");
+    } else {
+        pushinfo("Do not move inside a surface without enabling noclip first", "Attempting to move inside a surface without enabling noclip first may result in invalid input.")
     }
 
     validateAandC(tokens);
@@ -102,6 +104,21 @@ function pushwarning(warn, why) {
   details.appendChild(summary);
   details.appendChild(paragraph);
   details.classList.add('warningmessage')
+
+  document.getElementById("log").appendChild(details);
+}
+
+function pushinfo(info, why) {
+  const details = document.createElement("details");
+  const summary = document.createElement("summary");
+  summary.textContent = info;
+  
+  const paragraph = document.createElement("p");
+  paragraph.textContent = why;
+
+  details.appendChild(summary);
+  details.appendChild(paragraph);
+  details.classList.add('infomessage')
 
   document.getElementById("log").appendChild(details);
 }
